@@ -13,5 +13,78 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\analytics">
+      <UniqueIdentifier>{08811b84-3afb-4b1a-9306-c5b47b260794}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\analytics">
+      <UniqueIdentifier>{aed9bd05-cad9-4b6f-babc-d7839130900a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\arrays">
+      <UniqueIdentifier>{e19d365d-0061-43c5-8d7a-34dc730d44c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\debug">
+      <UniqueIdentifier>{439b7b79-48c8-439a-83d6-d7320af411cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\strategies">
+      <UniqueIdentifier>{9c58bb76-3fdd-4832-94d9-884d88d2e312}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\arrays">
+      <UniqueIdentifier>{f8563615-c5a2-4301-9926-1d4aba50abde}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\debug">
+      <UniqueIdentifier>{f037ca4b-b81b-48e3-b5bc-743f6e2ac147}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\mktapi">
+      <UniqueIdentifier>{b3cfed41-9faa-4533-9923-2db50ff9a6d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\strategies">
+      <UniqueIdentifier>{49eda5cb-5d04-4a5d-832d-918ed0c2a98f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\mktapi">
+      <UniqueIdentifier>{43dae1da-0b8a-48cf-9899-5bfdc1e2a89b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\conventions">
+      <UniqueIdentifier>{46852858-95e1-462d-a3e6-1737d1efb523}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="utils\analytics\analytics.c">
+      <Filter>Source Files\analytics</Filter>
+    </ClCompile>
+    <ClCompile Include="utils\arrays\arrays.c">
+      <Filter>Source Files\arrays</Filter>
+    </ClCompile>
+    <ClCompile Include="utils\debugh\debug.c">
+      <Filter>Source Files\debug</Filter>
+    </ClCompile>
+    <ClCompile Include="utils\strategies\rsistrategy.c">
+      <Filter>Source Files\strategies</Filter>
+    </ClCompile>
+    <ClCompile Include="utils\mktapi\mktapi.c">
+      <Filter>Source Files\mktapi</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="utils\analytics\analytics.h">
+      <Filter>Header Files\analytics</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\arrays\arrays.h">
+      <Filter>Header Files\arrays</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\debugh\debug.h">
+      <Filter>Header Files\debug</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\mktapi\mktapi.h">
+      <Filter>Header Files\mktapi</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\strategies\rsistrategy.h">
+      <Filter>Header Files\strategies</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\conv.h">
+      <Filter>Header Files\conventions</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -1,0 +1,1 @@
+char EQUITYDB[] = "C:\\Users\\ccodi\\Documents\\EQUITYDATA\\PX_Python.db";
