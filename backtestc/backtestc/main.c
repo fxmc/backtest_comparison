@@ -11,7 +11,7 @@
 #include "utils/debugh/debug.h"
 
 
-static char FILENAME[] = "C:\\Users\\ccodi\\Documents\\PROGRAMMING\\C\\backtestc\\data\\spy.csv";
+static char FILENAME[] = "..\\data\\spy.csv";
 
 
 void print_intro() {
