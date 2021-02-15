@@ -1,7 +1,8 @@
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <stdio.h>
-
+#include <stdlib.h>
+#include <direct.h>
 
 #include "utils/mktapi/mktapi.h"
 #include "utils/conv.h"
@@ -11,18 +12,58 @@
 #include "utils/debugh/debug.h"
 
 
-static char FILENAME[] = "..\\data\\spy.csv";
+static char FILENAME[]   = "..\\..\\data\\spy.csv";     // This specification works when executing in VS
+static char OUTPUTFILE[] = "..\\..\\data\\rsi2_c.csv";  // This specification works when executing in VS
 
 
 void print_intro() {
 	printf("\n");
 	printf("Strategy Tester!\n");
 	printf("\n");
+
+	// Get the current working directory
+	char* buffer;
+	if ((buffer = _getcwd(NULL, 0)) == NULL) {
+		printf("Error obtaining current working directory: %d\n", errno);
+		exit(EXIT_FAILURE);
+	} else {
+		printf("Current Working Directory: %s\n", buffer);
+		free(buffer);
+	}
+}
+
+
+void output_file(arraytype* close, arraytype* ma200, arraytype* ma5, arraytype* rsi2, arraytype* posn, arraytype* cash, arraytype* pl) {
+	int ret = 0;
+	if (close->length != ma200->length) ret = -1;
+	if (close->length != ma5->length) ret = -1;
+	if (close->length != rsi2->length) ret = -1;
+	if (close->length != posn->length) ret = -1;
+	if (close->length != cash->length) ret = -1;
+	if (close->length != pl->length) ret = -1;
+
+	if (ret == -1) {
+		printf("Arrays need to be of equal length to write to file!\n");
+		exit(EXIT_FAILURE);
+	}
+	FILE * fp = fopen(OUTPUTFILE, "w");
+	if (fp == NULL) {
+		printf("Error in allocating array: %d\n", errno);
+		printf("Error message: %s\n", strerror(errno));
+		exit(EXIT_FAILURE);
+	}
+	fprintf(fp, "CLOSE,MA200,MA5,RSI2,POSN,CASH,PL\n");
+	for (int i = 0; i < close->length; i++) {
+		fprintf(fp, "%.16f,%.16f,%.16f,%.16f,%.16f,%.16f,%.16f\n", 
+			close->array[i], ma200->array[i], ma5->array[i], rsi2->array[i], posn->array[i], cash->array[i], pl->array[i]);
+	}
+	fclose(fp);
 }
 
 
 int backtest(void) {
 	print_intro();
+
 	
 	int ma_long_period = 200;
 	int ma_short_period = 5;
@@ -74,6 +115,7 @@ int backtest(void) {
 	add_array(pl, mmul_array(posn, close));
 
 	printf("Final PL Value                 : %.7f\n", pl->array[pl->length - 1]);
+	output_file(close, ma200, ma5, rsi2, posn, cash, pl);
 
 	// Freeing up all allocated memory.
 	free_array(open);
