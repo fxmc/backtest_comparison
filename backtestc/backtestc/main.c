@@ -55,7 +55,7 @@ void output_file(arraytype* close, arraytype* ma200, arraytype* ma5, arraytype* 
 	fprintf(fp, "CLOSE,MA200,MA5,RSI2,POSN,CASH,PL\n");
 	for (int i = 0; i < close->length; i++) {
 		fprintf(fp, "%.16f,%.16f,%.16f,%.16f,%.16f,%.16f,%.16f\n", 
-			close->array[i], ma200->array[i], ma5->array[i], rsi2->array[i], posn->array[i], cash->array[i], pl->array[i]);
+			close->array[i], ma5->array[i], ma200->array[i], rsi2->array[i], posn->array[i], cash->array[i], pl->array[i]);
 	}
 	fclose(fp);
 }
@@ -111,8 +111,8 @@ int backtest(void) {
 	printf("time in seconds: %.20f\n", (b - a) / number_runs);
 	// *****************************************************************************
 
-	arraytype* pl = deep_copy_array(cash);
-	add_array(pl, mmul_array(posn, close));
+	arraytype* value = mmul_array(posn, close);
+	arraytype* pl = add_array(cash, value);
 
 	printf("Final PL Value                 : %.7f\n", pl->array[pl->length - 1]);
 	output_file(close, ma200, ma5, rsi2, posn, cash, pl);
@@ -128,6 +128,7 @@ int backtest(void) {
 	free_array(rsi2);
 	free_array(posn);
 	free_array(cash);
+	free_array(value);
 	free_array(pl);
 
 	return 0;
