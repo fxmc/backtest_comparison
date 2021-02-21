@@ -1,4 +1,4 @@
-# backtest_compariosn
+# Backtest Comparison
 
 The purpose of this repo is to time a basic trading strategy implemented in different languages.
 
