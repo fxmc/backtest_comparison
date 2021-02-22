@@ -39,6 +39,13 @@ if __name__ == "__main__":
 
     ST_TM = time.time()
     for IX in range(0, 100):
+        rsi2_nodef.run_strategy_df(DATA, 20.0, SIX, POSN, CASH)
+    ED_TM = time.time()
+    TM = (ED_TM - ST_TM) / 100
+    print("Time in seconds for run_strategy: {}".format(str(TM)))
+
+    ST_TM = time.time()
+    for IX in range(0, 100):
         rsi2_def.run_strategy(CLOSE, MA_LONG, MA_SHORT, RSI_N, 20.0, SIX, POSN, CASH)
     ED_TM = time.time()
     TM = (ED_TM - ST_TM) / 100

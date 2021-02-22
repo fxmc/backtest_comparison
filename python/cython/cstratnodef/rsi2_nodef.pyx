@@ -1,13 +1,6 @@
 import pandas as pd
 import math
 
-def first_valid_index(*args):
-    ix_list = []
-    for series in args:
-        ix_list.append(series.first_valid_index())
-    return max(ix_list)
-
-
 def run_strategy(close, ma_long, ma_short, rsi_n, lower_rsi, start_indx, posn, cash):
     long_posn = False
 
@@ -53,4 +46,3 @@ def run_strategy_df(data: pd.DataFrame, lower_rsi: float, start_indx: int, posn:
                 shares = math.floor(cash[row.Index] / row.close)
                 posn[row.Index] = shares
                 cash[row.Index] = cash[row.Index] - shares * row.close
-
